@@ -1,9 +1,12 @@
-// Node js provides a global object and it is not a part of V8, It is inside Node js like there are more super powers other than V8.
 
-const obj = require('./sum.js');
+// const obj = require('./sum.js');
 
-obj.calculteSum(2,2);
+import {calculteSum} from "./sum.js"
+import { x } from "./sum.js";
 
-console.log(obj.x)
+calculteSum(2,2);
+
+console.log(x)
+
 
 console.log("This is app")
