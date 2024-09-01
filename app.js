@@ -1,8 +1,7 @@
 
 // const obj = require('./sum.js');
 
-import {calculteSum} from "./sum.js"
-import { x } from "./sum.js";
+const {x,calculteSum} = require('./sum')
 
 calculteSum(2,2);
 

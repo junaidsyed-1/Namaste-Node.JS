@@ -13,6 +13,24 @@
 
 1. CJS (Common JS Module) : By Default node js uses CJS for exporting and importing modules.
    - We can do *module.exports* to export and to import we can do *require*
+   - Code runs in synchronous way ( which means it blocks the code for a while until the required file is imported and executed).
+   - Older way.
+   - It runs in Non-strict mode
 2. MJS (ES Module) : We need to write type="module" in our package.json file to use ES module
    - We need to do to export is: export var name and to import, we need to simply do import var name from filename.
+   - We can use asynchronous 
+   - It is the newer way.
+   - It runs in Strict mode.
+
+# require('./path') in node js
+
+All the code of the module is wrapped inside a function(IIFE), that is why we can not access it directly until we export it: module.exports.
+ - IIFE(JS concept): Immediately Invoked Function Expression.    
+
+5 Steps to require('path')
+ 1. Resolving the module
+ 2. Loading the module
+ 3. Wraps inside IIFE
+ 4. Evaluation
+ 5. Caching
  
