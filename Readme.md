@@ -16,7 +16,7 @@
    - Code runs in synchronous way ( which means it blocks the code for a while until the required file is imported and executed).
    - Older way.
    - It runs in Non-strict mode
-2. MJS (ES Module) : We need to write type="module" in our package.json file to use ES module
+2. MJS/ESM (ES Module) : We need to write type="module" in our package.json file to use ES module
    - We need to do to export is: export var name and to import, we need to simply do import var name from filename.
    - We can use asynchronous 
    - It is the newer way.
@@ -34,3 +34,13 @@ All the code of the module is wrapped inside a function(IIFE), that is why we ca
  4. Evaluation
  5. Caching
  
+ # Node JS V8 Libuv
+ 
+In node js there are many super powers other than V8 engine. 
+
+- V8 JS Engine can only perform synchronous way, that means it can only execute the code line by line in synchronous way. But suppose if a task is taking so much time then it will block the thread, in that case in Node js there is dep/lib which is known as LIBUV which helps to perform Asynchronous I/O or Non-blocking I/O in a simple way and it is written in C language, because OS needs a low level language to communicate with.
+
+- Libuv kind of acts like a middleware between our OS and the V8 JS engine in Node js. Node js is asynchronous because of libuv
+ - Libuv has thread pool and also event loop and much more.
+
+- Whenever there is a async task V8 JS enigne just offload it to libuv. 
