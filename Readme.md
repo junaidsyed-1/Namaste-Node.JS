@@ -43,4 +43,12 @@ In node js there are many super powers other than V8 engine.
 - Libuv kind of acts like a middleware between our OS and the V8 JS engine in Node js. Node js is asynchronous because of libuv
  - Libuv has thread pool and also event loop and much more.
 
-- Whenever there is a async task V8 JS enigne just offload it to libuv. 
+- Whenever there is a async task V8 JS enigne just offload it to libuv.
+
+# How does setTimeout works
+
+So setTimeout is an async function which means by deafault JS can not execute it by itself, it need helps from other lib in node js, it is libuv and setTimeout is provided in globalThis. It is basically an API which is provided by node js.
+
+For instance, if we do setTimeout(()=>{},0) of 0 ms, Now the question is, Will this be executed immediately?
+The answer is no, it will be executed once the call stack is empty. Once it is, only then it will execute.
+Suppose if there is a function which is blocking the thread and because of that the setTimeout or any other async will have to wait for the thread/call stack to get empty and then they will be able to execute.
