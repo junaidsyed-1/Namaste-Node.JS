@@ -52,3 +52,5 @@ So setTimeout is an async function which means by deafault JS can not execute it
 For instance, if we do setTimeout(()=>{},0) of 0 ms, Now the question is, Will this be executed immediately?
 The answer is no, it will be executed once the call stack is empty. Once it is, only then it will execute.
 Suppose if there is a function which is blocking the thread and because of that the setTimeout or any other async will have to wait for the thread/call stack to get empty and then they will be able to execute.
+
+Go to https://astexplorer.net/ to explore how AST is formed;
