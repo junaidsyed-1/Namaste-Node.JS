@@ -54,3 +54,7 @@ The answer is no, it will be executed once the call stack is empty. Once it is, 
 Suppose if there is a function which is blocking the thread and because of that the setTimeout or any other async will have to wait for the thread/call stack to get empty and then they will be able to execute.
 
 Go to https://astexplorer.net/ to explore how AST is formed;
+
+# 17-sep EO:09 Libuv & Event Loop
+
+Event Loop : Event Loop constantlt monitors the call stack/ main thread and it checks whether it is idle or not, once it is then if there are any callback methods waiting in the CB queue, then it sends it to the call stack, which is then executed quickly.
