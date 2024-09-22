@@ -57,4 +57,22 @@ Go to https://astexplorer.net/ to explore how AST is formed;
 
 # 17-sep EO:09 Libuv & Event Loop
 
-Event Loop : Event Loop constantlt monitors the call stack/ main thread and it checks whether it is idle or not, once it is then if there are any callback methods waiting in the CB queue, then it sends it to the call stack, which is then executed quickly.
+Event Loop : Event Loop constantly monitors the call stack/ main thread and it checks whether it is idle or not, once it is then if there are any callback methods waiting in the CB queue, then it sends it to the call stack, which is then executed quickly.
+
+ # How Event Loop works?
+ There are multiple phases that happens inside evnet loop, 4 major phases are:
+  1 Timer 2 Poll 3 Check 4 CLose
+But before every phase it also runs 2 inside phase which has higher priority because these 2 phases runs before each outside phase.
+
+In the timer phase, it checks if there are any setInterval() or setTimeout().
+In the poll phase, it checks if there are any incoming connection req or api or any fs.
+In the check phase, event loop checks if there are any setImmediate() fn.
+In the close phase, it checks for close functions like soncket.onclose.
+
+But before each phase it also runs inside phase
+1 process.nextTick()
+2 promises callbacks
+
+Now the main point, how it works
+First it will check if there are any process.nextTick() and if there is it will execute after that it will check for promises, now it will go to the timer phase, after timer phase it will again check for the inner phase(process.nextTick() and promises), then to poll phase and then again to the inner phase, after that to the check phase and then again inner phase, after that to the close phase and so on.
+And meanwhile it is also constantly monitoring the call stack.
