@@ -76,3 +76,5 @@ But before each phase it also runs inside phase
 Now the main point, how it works
 First it will check if there are any process.nextTick() and if there is it will execute after that it will check for promises, now it will go to the timer phase, after timer phase it will again check for the inner phase(process.nextTick() and promises), then to poll phase and then again to the inner phase, after that to the check phase and then again inner phase, after that to the close phase and so on.
 And meanwhile it is also constantly monitoring the call stack.
+
+Imp: when the Event loop is idle and there is nothing in the callback queues and also in the call stack, then Event loop waits at the poll phase and essentially waits for the incoming events.
