@@ -60,8 +60,9 @@ Go to https://astexplorer.net/ to explore how AST is formed;
 Event Loop : Event Loop constantly monitors the call stack/ main thread and it checks whether it is idle or not, once it is then if there are any callback methods waiting in the CB queue, then it sends it to the call stack, which is then executed quickly.
 
  # How Event Loop works?
- There are multiple phases that happens inside evnet loop, 4 major phases are:
-  1 Timer 2 Poll 3 Check 4 CLose
+ There are multiple phases that happens inside event loop, 4 major phases are:
+  1) Timer 2) Poll 3) Check 4) CLose,
+  
 But before every phase it also runs 2 inside phase which has higher priority because these 2 phases runs before each outside phase.
 
 In the timer phase, it checks if there are any setInterval() or setTimeout().
