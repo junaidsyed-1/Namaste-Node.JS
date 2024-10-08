@@ -79,3 +79,52 @@ First it will check if there are any process.nextTick() and if there is it will 
 And meanwhile it is also constantly monitoring the call stack.
 
 Imp: when the Event loop is idle and there is nothing in the callback queues and also in the call stack, then Event loop waits at the poll phase and essentially waits for the incoming events.
+
+# Database
+
+ # What is Database?
+ => Database is an organised collection of well structured data.
+
+ # DBMS
+ => DMBS stands for Database Mangagement System, It is a software that interacts with end users, application, and the database itself to capture and analyse data.
+
+ # Types of Database
+  o) Relational DB - MySQL, postgreSQL
+  o) No SQL DB - MongoDB
+  o) In memory DB - Redis
+  o) Distributed SQL DB - Cockroach DB
+  o) Time series DB - Influx DB
+  o) OO DB - db40 
+  o) Graph DB - Neo4j
+  o) Hierarchial DB - IBM IMS
+  o) Network DB - IDMS
+  o) Cloud DB - Amazon RDS
+
+  # Relational database:
+  => Relational Databases, or Relational Database Mangagement System, store data in rows and columns which are used to form tables. A relationship between two table can be created using foreign key. Relational database are formed and managed using a fixed schema.
+
+  # Not only Structured Query Language (NoSQL):
+  => NoSQL approach used to ingest, store and retrieve unstructured data and semi-structured data within a database. Unstructured Data is a data that does not have a predefined data model or consistent organisation.
+
+  # What is a NoSQL database?
+  => The NoSQL database is database that uses flexible schema that accommodates unstructured data and semi-structured data while also utilizing a non-tabular data storage method.
+
+  # RDMS vs NoSQL(Document) 
+  => RDMS:
+     1. rows, colums and table
+     2. fixed schema
+     3. Structured data
+     4. SQL(Structured Query Language)
+     5. Tough horizontal scaling.
+     6. Relational : foreign ke, joins
+     7. Read heavy apps, transaction workloads
+     8. For instance: Banking apps
+     NoSQL:
+     1. collection, Document, field
+     2. flexible schema
+     3. Unstructured data
+     4. Mongo
+     5. Easy horizontal and vertical scaling.
+     6. Nested Data
+     7. Real time data, Big data, Distributed Computing
+     8. For instance: Real time analysis, social media
