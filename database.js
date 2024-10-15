@@ -21,8 +21,11 @@ async function main() {
         phone: "931294802"
     }
 
-    const insertRes = await collection.insertOne(data);
-    console.log(("Inserted Data =>", insertRes))
+    // const insertRes = await collection.insertOne(data);
+    // console.log(("Inserted Data =>", insertRes))
+
+    const result = await collection.find({firstName : "Junaid"}).toArray();
+    console.log("result=> ", result)
 
     return "done.."
 };
