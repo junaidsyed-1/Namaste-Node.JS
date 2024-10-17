@@ -4,7 +4,7 @@
   "description": "this is the backend for devTinder",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dev": "nodemon ./src/app.js"
   },
   "author": "Junaid Syed",
   "license": "ISC",
