@@ -2,20 +2,24 @@ const express = require("express");
 const port = 7777;
 
 const app = express();
+const { adminAuth, userAuth } = require("../middlewares/auth");
 
-app.use("/user", (req, res, next) => {
-  console.log("Middleware: 1 , Handling the route 1");
-  next();
+app.use("/admin", adminAuth);
+
+app.use("/admin/getAllData", (req, res) => {
+  res.send("Fetched all Data successfully");
 });
 
-app.get("/user", (req, res, next) => {
-  console.log("Middleware: 2, Handling the route 2");
-  next();
+app.use("/admin/deleteAllData", (req, res) => {
+  res.send("All data has been deleted");
 });
 
-app.get("/user", (req, res) => {
-  console.log("Actual route handler");
-  res.send("Response");
+app.use("/user/login", (req, res) => {
+  res.send("Logged in success");
+});
+
+app.use("/user", userAuth, (req, res) => {
+  res.send("User fetched success");
 });
 
 app.listen(port, () => {
