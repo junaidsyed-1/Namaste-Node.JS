@@ -17,3 +17,21 @@
 # When we create route the order of the route matter. because the routing is oreder-dependent. 
 - Express executes routes in the order they are defined. If you put a more general route like "/" first, it can catch requests intended for more specific routes (like /dash or /test), making them unreachable.
 - Since this is synchronous code, once a response is sent (e.g., res.send()), the request is considered handled, and no further routes are checked.
+
+# Routing
+=> Routing refers to how an application's endpoint(url) should response to client request. In express basically there are multiple HTTP methods:
+1. GET : we use GET to fetch the details.
+2. POST : we use POST to save the data to DB.
+3. PUT : Used to update the data
+4. PATCH : Used to update the data
+5. DELETE: Used to delete the data from the DB
+6. OPTIONS
+
+# Route paths
+=> Route paths in combination with a request method, define the endpoint at which requests can be made. Route paths can be string, string patterns and regex.
+For Instance: The characters ?, +, * and () are subsets of their regular expression.
+
+# Route Parameters
+=> Route parameters are named URL segments that are used to capture the values from the url at their specified position at the URL. Then the captured value are populated in the req.param
+
+=> While creating routes we can also use regex in the string. We can use dynamic routing we can use query and also params.
