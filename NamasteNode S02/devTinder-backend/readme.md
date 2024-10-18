@@ -13,3 +13,7 @@
 
 # What is a request handler?
 - Request handler is a functions in Express that processes incoming HTTP requests and sends back a response. The handler define what the server should do when a specifi route is hit, such as retrieving data, processing it, and sending a response back to the client.
+
+# When we create route the order of the route matter. because the routing is oreder-dependent. 
+- Express executes routes in the order they are defined. If you put a more general route like "/" first, it can catch requests intended for more specific routes (like /dash or /test), making them unreachable.
+- Since this is synchronous code, once a response is sent (e.g., res.send()), the request is considered handled, and no further routes are checked.
