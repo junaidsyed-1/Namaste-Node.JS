@@ -11,9 +11,6 @@
 # package-lock.json
 - package-lock.json is a file that is automatically generated when installing dependencies with npm. It locks the exact versions of the depencdency(and their dependencuies) to ensure consistency across different environment.
 
-# What is a request handler?
-- Request handler is a functions in Express that processes incoming HTTP requests and sends back a response. The handler define what the server should do when a specifi route is hit, such as retrieving data, processing it, and sending a response back to the client.
-
 # When we create route the order of the route matter. because the routing is oreder-dependent. 
 - Express executes routes in the order they are defined. If you put a more general route like "/" first, it can catch requests intended for more specific routes (like /dash or /test), making them unreachable.
 - Since this is synchronous code, once a response is sent (e.g., res.send()), the request is considered handled, and no further routes are checked.
@@ -32,6 +29,10 @@
 For Instance: The characters ?, +, * and () are subsets of their regular expression.
 
 # Route Parameters
-=> Route parameters are named URL segments that are used to capture the values from the url at their specified position at the URL. Then the captured value are populated in the req.param
+=> Route parameters are named URL segments that are used to capture the values from the url at their specified position at the URL. Then the captured value are populated in the req.param.
+
+# What is a request/route handler?
+=> Request/Route handler is a functions in Express that processes incoming HTTP requests and sends back a response. The handler define what the server should do when a specifi route is hit, such as retrieving data, processing it, and sending a response back to the client.
+  We can also have multiple route handler in the same route.
 
 => While creating routes we can also use regex in the string. We can use dynamic routing we can use query and also params.
