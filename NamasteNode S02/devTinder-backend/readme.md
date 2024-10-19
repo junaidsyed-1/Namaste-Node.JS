@@ -54,3 +54,5 @@ We can also have multiple route handler in the same route.
 => We need middleware because they can perform various tasks such as processing requests, modifying the request and response objects, executing code, and ending the request-response cycle by sendig a response. Middleware continues to run until a response is sent or next() function is called to pass control to the next middleware or route handler.
 
 => While creating routes we can also use regex in the string. We can use dynamic routing we can use query and also params.
+
+# In Mongoose: An instance of a model is called a document. Creating them and saving to the database is easy.
