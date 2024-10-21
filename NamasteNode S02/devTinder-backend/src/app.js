@@ -14,7 +14,7 @@ app.post("/signup", async (req, res) => {
     await user.save();
     res.send("User Saved successfully");
   } catch (error) {
-    res.status(400).send("User can not be saved");
+    res.status(400).send("User can not be saved" + error.message);
   }
 });
 
@@ -89,10 +89,11 @@ app.patch("/user", async (req, res) => {
   try {
     const user = await User.findOneAndUpdate({ emailId: emailId }, data, {
       returnDocument: "after",
+      runValidators: true,
     });
     res.send(user);
   } catch (error) {
-    res.status(400).send("Something went wrong..");
+    res.status(400).send("Something went wrong.." + error.message);
   }
 });
 
