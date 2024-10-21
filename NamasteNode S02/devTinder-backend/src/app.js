@@ -20,6 +20,36 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// Create a user API, to find a user by email;
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.emailId;
+
+  try {
+    const user = await User.findOne({ emailId: userEmail });
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(404).send("User not found!");
+    }
+  } catch (error) {
+    res.status(400).send("Something went wrong");
+  }
+});
+
+// Get all the user - Feed API
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({});
+    if (users.length === 0) {
+      res.status(404).send("There are no users");
+    } else {
+      res.send(users);
+    }
+  } catch (error) {
+    res.status(400).send("Something went wrong");
+  }
+});
+
 connectDB()
   .then(() => {
     console.log("Datababse connected successfully..");
