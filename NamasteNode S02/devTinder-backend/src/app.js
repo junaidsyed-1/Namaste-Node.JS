@@ -7,8 +7,6 @@ const app = express();
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-  console.log(req.body);
-
   // Create an instance of the user model
   const user = new User(req.body);
 
@@ -47,6 +45,54 @@ app.get("/feed", async (req, res) => {
     }
   } catch (error) {
     res.status(400).send("Something went wrong");
+  }
+});
+
+app.get("/getUserByID", async (req, res) => {
+  const id = req.body._id;
+
+  const user = await User.findById(id);
+  res.send(user);
+});
+
+// Delete a user
+app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+
+  try {
+    await User.findByIdAndDelete(userId);
+
+    res.send("User Deleted successfully");
+  } catch (error) {
+    res.status(400).send("Something went wrong");
+  }
+});
+
+// Update a User- using findByIdAndUpdate
+// app.patch("/user", async (req, res) => {
+//   const userId = req.body.userId;
+//   const data = req.body;
+
+//   try {
+//     const user = await User.findByIdAndUpdate(userId, data);
+//     res.send(user);
+//   } catch (err) {
+//     res.status(400).send("Something went wrong");
+//   }
+// });
+
+// Lets update a user using email - findOneAndUpdate and i have also used options: returnDocument
+app.patch("/user", async (req, res) => {
+  const emailId = req.body.emailId;
+  const data = req.body;
+
+  try {
+    const user = await User.findOneAndUpdate({ emailId: emailId }, data, {
+      returnDocument: "after",
+    });
+    res.send(user);
+  } catch (error) {
+    res.status(400).send("Something went wrong..");
   }
 });
 
