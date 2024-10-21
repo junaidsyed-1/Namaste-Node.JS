@@ -69,33 +69,45 @@ app.delete("/user", async (req, res) => {
 });
 
 // Update a User- using findByIdAndUpdate
-// app.patch("/user", async (req, res) => {
-//   const userId = req.body.userId;
-//   const data = req.body;
-
-//   try {
-//     const user = await User.findByIdAndUpdate(userId, data);
-//     res.send(user);
-//   } catch (err) {
-//     res.status(400).send("Something went wrong");
-//   }
-// });
-
-// Lets update a user using email - findOneAndUpdate and i have also used options: returnDocument
-app.patch("/user", async (req, res) => {
-  const emailId = req.body.emailId;
+app.patch("/user/:userId", async (req, res) => {
+  const userId = req.params.userId;
   const data = req.body;
 
   try {
-    const user = await User.findOneAndUpdate({ emailId: emailId }, data, {
+    const ALLOWED_UPDATES = ["age", "photoUrl", "skills", "gender", "about"];
+    const isUpdateAllowed = Object.keys(data).every((k) =>
+      ALLOWED_UPDATES.includes(k)
+    );
+
+    if (!isUpdateAllowed) {
+      throw new Error("Update Not Allowed");
+    }
+
+    const user = await User.findByIdAndUpdate(userId, data, {
       returnDocument: "after",
       runValidators: true,
     });
     res.send(user);
-  } catch (error) {
-    res.status(400).send("Something went wrong.." + error.message);
+  } catch (err) {
+    res.status(400).send("Something went wrong: " + err.message);
   }
 });
+
+// Lets update a user using email - findOneAndUpdate and i have also used options: returnDocument
+// app.patch("/user", async (req, res) => {
+//   const emailId = req.body.emailId;
+//   const data = req.body;
+
+//   try {
+//     const user = await User.findOneAndUpdate({ emailId: emailId }, data, {
+//       returnDocument: "after",
+//       runValidators: true,
+//     });
+//     res.send(user);
+//   } catch (error) {
+//     res.status(400).send("Something went wrong.." + error.message);
+//   }
+// });
 
 connectDB()
   .then(() => {

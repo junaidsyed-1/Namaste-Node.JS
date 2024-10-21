@@ -35,20 +35,34 @@ const userSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      validate(value) {
-        if (!["male", "female"].includes(value)) {
-          throw new Error("Gender value is incorrect");
-        }
+      validate: {
+        validator: function (value) {
+          if (!["male", "female"].includes(value)) {
+            throw new Error("Gender value is incorrect");
+          }
+        },
       },
     },
     skills: {
       type: [String],
       trim: true,
+      validate: {
+        validator: function (arr) {
+          return arr.length <= 10;
+        },
+        message: "You can only enter up to 10 skills.",
+      },
     },
     about: {
       type: String,
       default: "This is the deafult value for about",
       trim: true,
+      validate: {
+        validator: function (str) {
+          return str.length <= 200;
+        },
+        message: "You can only enter 200 characters.",
+      },
     },
     photoUrl: {
       type: String,
