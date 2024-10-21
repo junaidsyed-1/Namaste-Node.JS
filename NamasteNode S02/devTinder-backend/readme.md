@@ -2,6 +2,7 @@
 
 - Node.js framework: Express.js
 - For DB: MongoDB, Mongoose
+- Validaor : For validation
 
 # Node modules
 
