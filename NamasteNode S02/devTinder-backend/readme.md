@@ -3,6 +3,7 @@
 - Node.js framework: Express.js
 - For DB: MongoDB, Mongoose
 - Validaor : For validation
+- bcrypt - for password hash
 
 # Node modules
 
