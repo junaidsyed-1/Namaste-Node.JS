@@ -4,6 +4,8 @@
 - For DB: MongoDB, Mongoose
 - Validaor : For validation
 - bcrypt - for password hash
+- cookie-parser
+- JWT - token
 
 # Node modules
 
