@@ -57,19 +57,18 @@ app.post("/login", async (req, res) => {
 
     // Check if there is a user
     const user = await User.findOne({ emailId });
-    const { _id } = user;
     if (!user) {
       throw new Error("Invalid credentials!");
     }
 
     // Compare the password
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await user.verifyPassword(password);
 
     if (!isPasswordValid) {
       throw new Error("Invalid credentials!");
     } else {
       // Create a token and send it to cookie
-      const token = jwt.sign({ _id }, "SECRETKEY@123", { expiresIn: "1d" });
+      const token = await user.setJwtToken();
 
       res.cookie("token", token);
       res.send("Login Successfull");
