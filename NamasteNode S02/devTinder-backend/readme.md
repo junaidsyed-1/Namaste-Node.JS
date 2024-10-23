@@ -60,3 +60,30 @@ We can also have multiple route handler in the same route.
 => While creating routes we can also use regex in the string. We can use dynamic routing we can use query and also params.
 
 # In Mongoose: An instance of a model is called a document. Creating them and saving to the database is easy.
+
+# APIs for devTinder
+
+## authRouter
+
+- POST /signup
+- POST /login
+- POST /logout
+
+## profileRouter
+
+- GET /profile/view
+- PATCH /profile/edit
+- PATCH /profile/password
+
+## requestRouter
+
+- POST /request/send/interested/:userId
+- POST /request/send/ignored/:userId
+- POST /request/review/accepted/:requestId
+- POST /request/review/rejected/:requestId
+
+## userRouter
+
+- GET /feed
+- GET /user/connections
+- GET /request/received
