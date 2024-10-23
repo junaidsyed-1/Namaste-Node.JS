@@ -22,9 +22,9 @@ router.post("/signup", async (req, res) => {
     });
 
     await user.save();
-    res.send("User Saved successfully");
+    res.json({ message: "User Saved successfully", data: { user } });
   } catch (error) {
-    res.status(400).send("ERROR: " + error.message);
+    res.status(400).json({ Error: error.message });
   }
 });
 
@@ -46,10 +46,17 @@ router.post("/login", async (req, res) => {
     // create a Jwt Token and send it to the client
     const token = await user.setJwtToken();
     res.cookie("token", token);
-    res.send("User Logged In Success");
+    res.json({ message: "User Logged In Success", data: { user } });
   } catch (error) {
-    res.status(400).send("ERROR: " + error.message);
+    res.status(400).json({ Error: error.message });
   }
+});
+
+router.post("/logout", (req, res) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+  });
+  res.send("Logged out");
 });
 
 module.exports = router;
