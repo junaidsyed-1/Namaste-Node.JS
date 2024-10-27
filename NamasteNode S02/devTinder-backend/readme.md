@@ -77,12 +77,11 @@ We can also have multiple route handler in the same route.
 
 ## requestRouter
 
-- POST /request/send/:status/:userId
-- POST /request/review/accepted/:requestId
-- POST /request/review/rejected/:requestId
+- POST /request/send/:status("interested","ignored")/:userId
+- POST /request/review/:status("accepted","rejected")/:requestId
 
 ## userRouter
 
-- GET /feed
+- GET /user/requests/received
 - GET /user/connections
-- GET /request/received
+- GET /user/feed
