@@ -84,4 +84,5 @@ We can also have multiple route handler in the same route.
 
 - GET /user/requests/received
 - GET /user/connections
+
 - GET /user/feed
