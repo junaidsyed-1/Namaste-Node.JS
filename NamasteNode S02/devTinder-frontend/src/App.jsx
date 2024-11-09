@@ -28,7 +28,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       {/* <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Body />}>
@@ -38,7 +38,7 @@ function App() {
         </Routes>
       </BrowserRouter> */}
       <RouterProvider router={router} />
-    </>
+    </div>
   );
 }
 
