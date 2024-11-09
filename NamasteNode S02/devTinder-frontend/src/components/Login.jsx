@@ -1,10 +1,21 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const Login = () => {
-  const [emial, setEmail] = useState("junaid@gmail.com");
-  const [password, setPassword] = useState("Junaid123@");
+  const [emailId, setEmail] = useState("salman@mail.com");
+  const [password, setPassword] = useState("Salman@123");
 
-  function handleLogin() {}
+  async function handleLogin() {
+    try {
+      const res = await axios.post("http://localhost:7777/login", {
+        emailId,
+        password,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="flex justify-center items-center h-screen ">
@@ -17,9 +28,10 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </div>
               <input
-                value={emial}
+                value={emailId}
                 onChange={(e) => setEmail(e.target.value)}
-                type="text"
+                type="email"
+                name="emailId"
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
@@ -31,6 +43,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
+                name="password"
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
