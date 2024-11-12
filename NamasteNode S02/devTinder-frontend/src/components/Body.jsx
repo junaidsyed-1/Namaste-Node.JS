@@ -6,9 +6,11 @@ import { Outlet } from "react-router-dom";
 const Body = () => {
   return (
     <>
-      <div className="flex-grow">
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-        <Outlet />
+        <div className="flex-grow">
+          <Outlet />
+        </div>
         <Footer />
       </div>
     </>
