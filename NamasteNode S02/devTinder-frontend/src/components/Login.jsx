@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
@@ -10,11 +10,12 @@ const Login = () => {
   const [password, setPassword] = useState("Salman@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((store) => store.user.isAuthenticated);
 
   async function handleLogin() {
     try {
       const res = await axios.post(
-        BASE_URL + "login",
+        BASE_URL + "/login",
         {
           emailId,
           password,
@@ -27,6 +28,12 @@ const Login = () => {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-screen ">

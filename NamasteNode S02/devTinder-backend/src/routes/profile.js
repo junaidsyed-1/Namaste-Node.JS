@@ -9,7 +9,7 @@ router.get("/profile/view", userAuth, async (req, res) => {
   try {
     const user = req.user;
 
-    res.json({ data: user });
+    res.json(user);
   } catch (error) {
     res.status(400).json({ Error: error.message });
   }

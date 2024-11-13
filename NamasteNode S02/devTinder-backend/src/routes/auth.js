@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
     // create a Jwt Token and send it to the client
     const token = await user.setJwtToken();
     res.cookie("token", token);
-    res.json({ message: "User Logged In Success", data: { user } });
+    res.json(user);
   } catch (error) {
     res.status(400).json({ Error: error.message });
   }
