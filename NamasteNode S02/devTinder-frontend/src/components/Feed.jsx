@@ -27,10 +27,8 @@ const Feed = () => {
 
   return (
     feed && (
-      <div className="grid grid-cols-1 sm:grid-cols-6 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6  gap-2 md:gap-4 p-4">
-        {feed?.data.map((card) => (
-          <UserCard key={card._id} user={card} />
-        ))}
+      <div className="flex justify-center items-center h-screen">
+        <UserCard user={feed?.data[0]} />
       </div>
     )
   );
