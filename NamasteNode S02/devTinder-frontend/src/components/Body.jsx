@@ -27,10 +27,10 @@ const Body = () => {
   };
 
   useEffect(() => {
-    if (!user && !isAuthenticated) {
+    if (!user) {
       fetchUser();
     }
-  }, [isAuthenticated, user]);
+  }, [user]);
 
   return (
     <>

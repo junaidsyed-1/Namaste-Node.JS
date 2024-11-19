@@ -8,6 +8,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmail] = useState("salman@mail.com");
   const [password, setPassword] = useState("Salman@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((store) => store.user.isAuthenticated);
@@ -25,7 +26,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (error) {
-      console.log(error);
+      setError(error?.response?.data?.Error);
     }
   }
 
@@ -33,7 +34,7 @@ const Login = () => {
     if (isAuthenticated) {
       navigate("/");
     }
-  }, []);
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="flex justify-center items-center h-screen ">
@@ -65,6 +66,9 @@ const Login = () => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
+          </div>
+          <div className="inline-block">
+            <p className="text-red-500 ">{error}</p>
           </div>
           <div className="card-actions justify-between">
             <button onClick={handleLogin} className="btn btn-primary">
