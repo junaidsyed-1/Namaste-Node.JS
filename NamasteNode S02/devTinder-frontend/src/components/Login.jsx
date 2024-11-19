@@ -29,7 +29,6 @@ const Login = () => {
       setError(error?.response?.data?.Error);
     }
   }
-
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
